@@ -24,5 +24,10 @@ namespace Systems_ACW
         {
             InitializeComponent();
         }
+
+        public void RemoveAnnoucement()
+        {
+
+        }
     }
 }
