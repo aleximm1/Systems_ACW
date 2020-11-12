@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Systems_ACW
 {
-    class Student : User
+    class Student
     {
         string name;
         int ID;

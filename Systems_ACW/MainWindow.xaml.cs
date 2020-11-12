@@ -20,12 +20,27 @@ namespace Systems_ACW
     /// </summary>
     public partial class MainWindow : Window
     {
+        User currentUser;
         public MainWindow()
         {
             InitializeComponent();
+            Visibility = Visibility.Hidden;
+            LogInWindow logInWindow = new LogInWindow();
+            logInWindow.ShowDialog();
+            currentUser = new User(logInWindow.UsernameTextbox.Text, logInWindow.PasswordTextbox.Text, "Student");
+            //This is where the database check for login happens.
+            if (currentUser.Name == "test user")
+            {
+                Visibility = Visibility.Visible;
+            }
+            else
+            {
+                logInWindow = new LogInWindow();
+                logInWindow.ShowDialog();
+            }
         }
 
-        public void RemoveAnnoucement()
+        private void ModulesListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }
