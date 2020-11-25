@@ -58,6 +58,13 @@ namespace Systems_ACW
         private void Module1Button_Click(object sender, RoutedEventArgs e)
         {
             currentUser.Modules[0].addAnnouncement("Title", "Body.");
+            currentUser.Modules[0].Announcements[0].addComment("This is a test comment", currentUser);
+            currentUser.Modules[0].Announcements[0].addComment("This is also a test comment", currentUser);
+            currentUser.Modules[0].Announcements[0].addComment("This is also a test commentaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", currentUser);
+            currentUser.Modules[0].Announcements[0].addComment("This is also a test comment", currentUser);
+            currentUser.Modules[0].Announcements[0].addComment("This is also a test comment", currentUser);
+            currentUser.Modules[0].Announcements[0].addComment("This is also a test comment", currentUser);
+            currentUser.Modules[0].Announcements[0].addComment("This is also a test comment", currentUser);
             currentUser.Modules[0].addAnnouncement("Title2", "Body2.");
             currentUser.Modules[0].addAnnouncement("Title3", "Body3.");
             AnnouncementsWindow announcementsWindow = new AnnouncementsWindow(currentUser, currentUser.Modules[0]);

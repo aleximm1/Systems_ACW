@@ -25,11 +25,19 @@ namespace Systems_ACW
             for (int i = 0; i < currentModule.Announcements.Count(); i++)
             {
                 AnnouncementsBox.Items.Add(currentModule.Announcements[i]);
-                //currentModule.Announcements[i].LoadImg(currentPlayer.Hand.Cards[i].cardImage);
+                for (int j = 0; j < currentModule.Announcements[i].Comments.Count(); j++)
+                {
+                    CommentsBox.Items.Add(currentModule.Announcements[i].Comments[j]);
+                }
             }
         }
 
         private void AnnouncementsBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void ReplyButton_Click(object sender, RoutedEventArgs e)
         {
 
         }

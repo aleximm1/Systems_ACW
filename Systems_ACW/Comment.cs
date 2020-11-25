@@ -6,9 +6,18 @@ using System.Threading.Tasks;
 
 namespace Systems_ACW
 {
-    class Comment
+    public class Comment
     {
-        Student poster;
-        string body;
+        private User poster;
+        private string body;
+
+        public string Body { get { return body; } }
+        public User Poster { get { return poster; } }
+
+        public Comment(string pBody, User pPoster)
+        {
+            body = pBody;
+            poster = pPoster;
+        }
     }
 }
