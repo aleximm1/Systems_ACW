@@ -24,25 +24,59 @@ namespace Systems_ACW
         public MainWindow()
         {
             InitializeComponent();
+            bool logInFailed = false;
             Visibility = Visibility.Hidden;
+            logInFailed = attemptLogIn();
+            while(!logInFailed)
+            {
+                logInFailed = attemptLogIn();
+            }
+            Visibility = Visibility.Visible;
+        }
+
+        private bool attemptLogIn()
+        {
             LogInWindow logInWindow = new LogInWindow();
             logInWindow.ShowDialog();
-            currentUser = new User(logInWindow.UsernameTextbox.Text, logInWindow.PasswordTextbox.Text, "Student");
             //This is where the database check for login happens.
-            if (currentUser.Name == "test user")
+            if (logInWindow.UsernameTextbox.Text == "Username" && logInWindow.PasswordTextbox.Text == "Password")
             {
-                Visibility = Visibility.Visible;
-            }
+                currentUser = new User(logInWindow.UsernameTextbox.Text, logInWindow.PasswordTextbox.Text, "student");
+                return true;
+            } 
             else
             {
-                logInWindow = new LogInWindow();
-                logInWindow.ShowDialog();
+                return false;
             }
         }
 
         private void ModulesListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+        private void Module1Button_Click(object sender, RoutedEventArgs e)
+        {
+            currentUser.Modules[0].addAnnouncement("Title", "Body.");
+            currentUser.Modules[0].addAnnouncement("Title2", "Body2.");
+            currentUser.Modules[0].addAnnouncement("Title3", "Body3.");
+            AnnouncementsWindow announcementsWindow = new AnnouncementsWindow(currentUser, currentUser.Modules[0]);
+            Visibility = Visibility.Hidden;
+            announcementsWindow.ShowDialog();
+        }
+
+        private void Module2Button_Click(object sender, RoutedEventArgs e)
+        {
+            AnnouncementsWindow announcementsWindow = new AnnouncementsWindow(currentUser, currentUser.Modules[1]);
+            Visibility = Visibility.Hidden;
+            announcementsWindow.ShowDialog();
+        }
+
+        private void Module3Button_Click(object sender, RoutedEventArgs e)
+        {
+            AnnouncementsWindow announcementsWindow = new AnnouncementsWindow(currentUser, currentUser.Modules[2]);
+            Visibility = Visibility.Hidden;
+            announcementsWindow.ShowDialog();
         }
     }
 }

@@ -6,13 +6,10 @@ using System.Threading.Tasks;
 
 namespace Systems_ACW
 {
-    public class Teacher
+    public class Admin
     {
         string name;
-
-        public Teacher(string pName)
-        {
-            name = pName;
-        }
+        int id;
+        private string password;
     }
 }

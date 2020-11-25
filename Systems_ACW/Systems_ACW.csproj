@@ -55,7 +55,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Admin.cs" />
     <Compile Include="Announcement.cs" />
+    <Compile Include="AnnouncementsWindow.xaml.cs">
+      <DependentUpon>AnnouncementsWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Comment.cs" />
     <Compile Include="LogInWindow.xaml.cs">
       <DependentUpon>LogInWindow.xaml</DependentUpon>
@@ -66,6 +70,10 @@
       <DependentUpon>StudentInfoWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Teacher.cs" />
+    <Page Include="AnnouncementsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="LogInWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

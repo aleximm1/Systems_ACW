@@ -6,10 +6,18 @@ using System.Threading.Tasks;
 
 namespace Systems_ACW
 {
-    class Announcement
+    public class Announcement
     {
         string title;
         string body;
         DateTime timeSinceLastComment;
+
+        public string Title { get { return title; } }
+        public Announcement(string pTitle, string pBody)
+        {
+            title = pTitle;
+            body = pBody;
+            timeSinceLastComment = DateTime.Now;
+        }
     }
 }
