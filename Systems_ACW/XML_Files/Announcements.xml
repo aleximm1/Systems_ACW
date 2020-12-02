@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Announcements>
+	<announcement id="1">
+		<title>First Announcement</title>
+		<body>This is the body of the first Announcement lkgsakjlfdlskjgfdlkjglkjsfdkglslkjg</body>
+		<posterID>0001</posterID>
+		<dateTimePosted>02/12/2020</dateTimePosted>
+		<comments>
+			<commentID></commentID>
+		</comments>
+	</announcement>
+</Announcements>

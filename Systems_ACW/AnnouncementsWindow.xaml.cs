@@ -19,9 +19,12 @@ namespace Systems_ACW
     /// </summary>
     public partial class AnnouncementsWindow : Window
     {
-        public AnnouncementsWindow(User currentUser, Module currentModule)
+        private User currentUser;
+        private Announcement currentlySelectedAnnouncement;
+        public AnnouncementsWindow(User pCurrentUser, Module currentModule)
         {
             InitializeComponent();
+            currentUser = pCurrentUser;
             Announcement selectedAnnouncement = currentModule.Announcements[0];
             for (int i = 0; i < currentModule.Announcements.Count(); i++)
             {
@@ -48,14 +51,14 @@ namespace Systems_ACW
 
         private void AnnouncementsBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Announcement selectedAnnouncement = (Announcement)AnnouncementsBox.SelectedItem;
-            ChangeSelectedAnnouncement(selectedAnnouncement);
-            FillCommentsBox(selectedAnnouncement);
+            currentlySelectedAnnouncement = (Announcement)AnnouncementsBox.SelectedItem;
+            ChangeSelectedAnnouncement(currentlySelectedAnnouncement);
+            FillCommentsBox(currentlySelectedAnnouncement);
         }
 
         private void ReplyButton_Click(object sender, RoutedEventArgs e)
         {
-
+            Comment newComment = new Comment(ReplyTextbox.Text, currentUser, currentlySelectedAnnouncement);
         }
     }
 }

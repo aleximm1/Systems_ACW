@@ -6,20 +6,20 @@ using System.Threading.Tasks;
 
 namespace Systems_ACW
 {
-    public class Comment
+    class Reply
     {
         private User poster;
         private string body;
-        private int announcementCommentedOnID;
+        private Comment commentRepliedTo;
 
         public string Body { get { return body; } }
         public User Poster { get { return poster; } }
 
-        public Comment(string pBody, User pPoster, Announcement pAnnouncement)
+        public Reply(string pBody, User pPoster, Comment pComment)
         {
             body = pBody;
             poster = pPoster;
-            announcementCommentedOnID = pAnnouncement.ID;
+            commentRepliedTo = pComment;
         }
     }
 }

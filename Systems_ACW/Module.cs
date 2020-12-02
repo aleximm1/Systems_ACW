@@ -14,6 +14,7 @@ namespace Systems_ACW
         string name;
         int id;
 
+        public int ID { get { return id; } }
         public List<Announcement> Announcements { get { return announcements; } }
         public Module(string pName, int pID)
         {
@@ -37,11 +38,11 @@ namespace Systems_ACW
             students.Remove(student);
         }
 
-        public bool addAnnouncement(string pTitle, string pBody)
+        public bool addAnnouncement(string pTitle, string pBody, User user)
         {
             try
             {
-                Announcement newAnnouncement = new Announcement(pTitle, pBody);
+                Announcement newAnnouncement = new Announcement(pTitle, pBody, user);
                 announcements.Add(newAnnouncement);
             }
             catch (Exception e)
@@ -49,6 +50,11 @@ namespace Systems_ACW
                 return false;
             }
             return true;
+        }
+
+        public void loadAnnouncement(Announcement pAnnouncement)
+        {
+            announcements.Add(pAnnouncement);
         }
     }
 }
