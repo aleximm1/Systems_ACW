@@ -39,9 +39,17 @@ namespace Systems_ACW
             }
         }
 
+        private void ChangeSelectedAnnouncement(Announcement pAnnouncement)
+        {
+            PosterTextBlock.Text = pAnnouncement.Poster.Name;
+            TitleTextBlock.Text = pAnnouncement.Title;
+            BodyTextBlock.Text = pAnnouncement.Body;
+        }
+
         private void AnnouncementsBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Announcement selectedAnnouncement = (Announcement)AnnouncementsBox.SelectedItem;
+            ChangeSelectedAnnouncement(selectedAnnouncement);
             FillCommentsBox(selectedAnnouncement);
         }
 

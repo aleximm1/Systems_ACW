@@ -40,6 +40,29 @@
                 <RowDefinition Height="2*"/>
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="2*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Viewbox>
+                        <TextBlock x:Name="PosterTextBlock"></TextBlock>
+                    </Viewbox>
+                </Grid>
+                <Viewbox Grid.Row="1">
+                    <TextBlock x:Name="TitleTextBlock"></TextBlock>
+                </Viewbox>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Viewbox>
+                    <TextBlock x:Name="BodyTextBlock" ></TextBlock>
+                </Viewbox>
+            </Grid>
             <Grid Grid.Row="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>

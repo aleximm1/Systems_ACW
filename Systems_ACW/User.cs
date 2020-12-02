@@ -8,8 +8,8 @@ namespace Systems_ACW
 {
     public class User
     {
-        string name;
-        int id;
+        private string name;
+        private int id;
         private string password;
         private string accessLevel;
         private List<Module> modules = new List<Module>();

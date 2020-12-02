@@ -50,16 +50,11 @@ namespace Systems_ACW
             }
         }
 
-        private void ModulesListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
         private void Module1Button_Click(object sender, RoutedEventArgs e)
         {
             currentUser.Modules[0].addAnnouncement("Title", "Body.");
-            currentUser.Modules[0].addAnnouncement("Title2", "Body2.");
-            currentUser.Modules[0].addAnnouncement("Title3", "Body3.");
+            currentUser.Modules[0].addAnnouncement("Title2", "This is the body of the second announcement.");
+            currentUser.Modules[0].addAnnouncement("Title3", "Body of announcement number 3.");
             currentUser.Modules[0].Announcements[0].addComment("This is a test comment", currentUser);
             currentUser.Modules[0].Announcements[0].addComment("This is also a test comment", currentUser);
             currentUser.Modules[0].Announcements[2].addComment("This is also a test commentaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", currentUser);
@@ -70,6 +65,7 @@ namespace Systems_ACW
             AnnouncementsWindow announcementsWindow = new AnnouncementsWindow(currentUser, currentUser.Modules[0]);
             Visibility = Visibility.Hidden;
             announcementsWindow.ShowDialog();
+            Visibility = Visibility.Visible;
         }
 
         private void Module2Button_Click(object sender, RoutedEventArgs e)
@@ -77,6 +73,7 @@ namespace Systems_ACW
             AnnouncementsWindow announcementsWindow = new AnnouncementsWindow(currentUser, currentUser.Modules[1]);
             Visibility = Visibility.Hidden;
             announcementsWindow.ShowDialog();
+            Visibility = Visibility.Visible;
         }
 
         private void Module3Button_Click(object sender, RoutedEventArgs e)
@@ -84,6 +81,7 @@ namespace Systems_ACW
             AnnouncementsWindow announcementsWindow = new AnnouncementsWindow(currentUser, currentUser.Modules[2]);
             Visibility = Visibility.Hidden;
             announcementsWindow.ShowDialog();
+            Visibility = Visibility.Visible;
         }
     }
 }
