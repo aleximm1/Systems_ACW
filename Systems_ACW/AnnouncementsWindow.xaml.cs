@@ -22,19 +22,27 @@ namespace Systems_ACW
         public AnnouncementsWindow(User currentUser, Module currentModule)
         {
             InitializeComponent();
+            Announcement selectedAnnouncement = currentModule.Announcements[0];
             for (int i = 0; i < currentModule.Announcements.Count(); i++)
             {
                 AnnouncementsBox.Items.Add(currentModule.Announcements[i]);
-                for (int j = 0; j < currentModule.Announcements[i].Comments.Count(); j++)
-                {
-                    CommentsBox.Items.Add(currentModule.Announcements[i].Comments[j]);
-                }
+                FillCommentsBox(selectedAnnouncement);
+            }
+        }
+
+        private void FillCommentsBox(Announcement pAnnouncement)
+        {
+            CommentsBox.Items.Clear();
+            for (int j = 0; j < pAnnouncement.Comments.Count(); j++)
+            {
+                CommentsBox.Items.Add(pAnnouncement.Comments[j]);
             }
         }
 
         private void AnnouncementsBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            Announcement selectedAnnouncement = (Announcement)AnnouncementsBox.SelectedItem;
+            FillCommentsBox(selectedAnnouncement);
         }
 
         private void ReplyButton_Click(object sender, RoutedEventArgs e)
