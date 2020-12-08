@@ -96,7 +96,7 @@ namespace Systems_ACW
             string announcementBody = null;
             int posterId = 50;
             DateTime dateTimePosted = DateTime.Now;
-            List<Comment> announcementsComments;
+            List<Comment> announcementsComments = new List<Comment>();
             foreach(XmlNode node in xDoc.DocumentElement)
             {
                 string announcementIdString = node.Attributes[0].InnerText;
@@ -141,7 +141,10 @@ namespace Systems_ACW
                     }
                     if (childNode.NodeType == XmlNodeType.Element && childNode.Name == "Comments")
                     {
-                        LoadAnnouncementComments(announcementId);
+                        foreach (XmlNode commentNode in childNode.ChildNodes)
+                        {
+                            announcementsComments.Add(LoadAnnouncementComments(commentNode.InnerText));
+                        }
                     }
                 }   
                 Announcement loadedAnnouncement = new Announcement(announcementId, announcementTitle, announcementBody, posterId, dateTimePosted);
@@ -149,9 +152,11 @@ namespace Systems_ACW
             }
         }
 
-        private void LoadAnnouncementComments(int pAnnouncementId)
+        private Comment LoadAnnouncementComments(string pCommentId)
         {
-            
+
+            Comment newComment = new Comment();
+            return newComment;
         }
     }
 }

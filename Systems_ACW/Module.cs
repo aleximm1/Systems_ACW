@@ -8,8 +8,7 @@ namespace Systems_ACW
 {
     public class Module
     {
-        List<Student> students;
-        List<Teacher> teachers;
+        List<User> members;
         List<Announcement> announcements;
         string name;
         int id;
@@ -23,19 +22,14 @@ namespace Systems_ACW
             announcements = new List<Announcement>();
         }
 
-        public void AddPerson(Student student)
+        public void AddPerson(User pUser)
         {
-            students.Add(student);
+            members.Add(pUser);
         }
 
-        public void AddPerson(Teacher teacher) 
+        public void RemoveStudent(User pUser)
         {
-            teachers.Add(teacher);
-        }
-
-        public void RemoveStudent(Student student)
-        {
-            students.Remove(student);
+            members.Remove(pUser);
         }
 
         public bool addAnnouncement(string pTitle, string pBody, User user)
