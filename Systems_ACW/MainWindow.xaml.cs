@@ -141,9 +141,15 @@ namespace Systems_ACW
                     }
                     if (childNode.NodeType == XmlNodeType.Element && childNode.Name == "Comments")
                     {
+                        XmlDocument commentsDoc = new XmlDocument();
+                        commentsDoc.Load("XML_Files\\Comments.xml");
                         foreach (XmlNode commentNode in childNode.ChildNodes)
                         {
-                            announcementsComments.Add(LoadAnnouncementComments(commentNode.InnerText));
+                            Comment loadedComment = LoadAnnouncementComments(commentNode.InnerText, commentsDoc, announcementId);
+                            if (loadedComment != null)
+                            {
+                                announcementsComments.Add(loadedComment);
+                            }
                         }
                     }
                 }   
@@ -152,11 +158,100 @@ namespace Systems_ACW
             }
         }
 
-        private Comment LoadAnnouncementComments(string pCommentId)
+        private Comment LoadAnnouncementComments(string pCommentId, XmlDocument pCommentsDoc, int pAnnouncementId)
         {
-
-            Comment newComment = new Comment();
+            Comment newComment = null;
+            foreach (XmlNode node in pCommentsDoc.DocumentElement)
+            {
+                if (node.Attributes["id"].Value == pCommentId)
+                {
+                    int id = Convert.ToInt32(pCommentId);
+                    string body = null;
+                    int posterId = 0;
+                    DateTime datePosted = DateTime.Now;
+                    foreach(XmlNode childNode in node.ChildNodes)
+                    {
+                        if (childNode.NodeType == XmlNodeType.Element && childNode.Name == "body")
+                        {
+                            body = childNode.InnerText;
+                        }
+                        if (childNode.NodeType == XmlNodeType.Element && childNode.Name == "posterID")
+                        {
+                            try
+                            {
+                                posterId = Convert.ToInt32(childNode.InnerText);
+                            }
+                            catch
+                            {
+                                MessageBox.Show("Poster ID couldn't be converted to int");
+                            }
+                        }
+                        if (childNode.NodeType == XmlNodeType.Element && childNode.Name == "datePosted")
+                        {
+                            try
+                            {
+                                datePosted = Convert.ToDateTime(childNode.InnerText);
+                            }
+                            catch
+                            {
+                                MessageBox.Show("DateTime Posted couldn't be converted to DateTime");
+                            }
+                        }
+                    }
+                    newComment = new Comment(id, body, GetUSerFromID(posterId), pAnnouncementId, datePosted);
+                    break;
+                } 
+                else
+                {
+                    continue;
+                }
+            }
             return newComment;
+        }
+
+        private User GetUSerFromID(int pUserId)
+        {
+            string name = null;
+
+            XmlDocument usersDoc = new XmlDocument();
+            usersDoc.Load("XML_Files\\Users.xml");
+            foreach (XmlNode node in usersDoc.DocumentElement)
+            {
+                if (node.Attributes["id"].Value == pUserId.ToString())
+                {
+                    foreach (XmlNode childNode in node.ChildNodes)
+                    {
+                        if (childNode.NodeType == XmlNodeType.Element && childNode.Name == "name")
+                        {
+                            name = childNode.InnerText;
+                        }
+                        if (childNode.NodeType == XmlNodeType.Element && childNode.Name == "posterID")
+                        {
+                            try
+                            {
+                                posterId = Convert.ToInt32(childNode.InnerText);
+                            }
+                            catch
+                            {
+                                MessageBox.Show("Poster ID couldn't be converted to int");
+                            }
+                        }
+                        if (childNode.NodeType == XmlNodeType.Element && childNode.Name == "datePosted")
+                        {
+                            try
+                            {
+                                datePosted = Convert.ToDateTime(childNode.InnerText);
+                            }
+                            catch
+                            {
+                                MessageBox.Show("DateTime Posted couldn't be converted to DateTime");
+                            }
+                        }
+                    }
+                }
+            }
+            User user;
+            return user;
         }
     }
 }
