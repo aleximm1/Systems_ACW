@@ -26,9 +26,6 @@ namespace Systems_ACW
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-            User testStudent = new User(UsernameTextbox.Text, PasswordTextbox.Text, "Student");
-            User testTeacher = new User(UsernameTextbox.Text, PasswordTextbox.Text, "Teacher");
-            User testAdmin = new User(UsernameTextbox.Text, PasswordTextbox.Text, "Main Admin");
             this.DialogResult = true;
         }
     }

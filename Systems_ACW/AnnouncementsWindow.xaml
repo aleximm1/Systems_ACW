@@ -58,12 +58,8 @@
                     <TextBlock x:Name="TitleTextBlock"></TextBlock>
                 </Viewbox>
             </Grid>
-            <Grid Grid.Row="1">
-                <Viewbox>
-                    <TextBlock x:Name="BodyTextBlock" ></TextBlock>
-                </Viewbox>
-            </Grid>
-            <Grid Grid.Row="2">
+            <TextBlock Grid.Row="1"  FontSize="20" x:Name="BodyTextBlock" TextWrapping="Wrap"/>
+                <Grid Grid.Row="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="1*"/>

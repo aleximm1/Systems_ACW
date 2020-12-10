@@ -55,7 +55,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Admin.cs" />
     <Compile Include="Announcement.cs" />
     <Compile Include="AnnouncementsWindow.xaml.cs">
       <DependentUpon>AnnouncementsWindow.xaml</DependentUpon>
@@ -66,11 +65,9 @@
     </Compile>
     <Compile Include="Module.cs" />
     <Compile Include="Reply.cs" />
-    <Compile Include="Student.cs" />
     <Compile Include="StudentInfoWindow.xaml.cs">
       <DependentUpon>StudentInfoWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Teacher.cs" />
     <Page Include="AnnouncementsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -129,13 +126,19 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="XML_Files\Comments.xml" />
+    <EmbeddedResource Include="XML_Files\Comments.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="XML_Files\Modules.xml" />
+    <EmbeddedResource Include="XML_Files\Modules.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="XML_Files\Users.xml" />
+    <EmbeddedResource Include="XML_Files\Users.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

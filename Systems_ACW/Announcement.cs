@@ -70,12 +70,11 @@ namespace Systems_ACW
             comments = new List<Comment>();
         }
 
-        public bool addComment(string pBody, User pUser)
+        public bool addComment(Comment pComment)
         {
             try
             {
-                Comment newComment = new Comment(pBody, pUser, this);
-                comments.Add(newComment);
+                comments.Add(pComment);
             }
             catch (Exception e)
             {
@@ -86,8 +85,30 @@ namespace Systems_ACW
 
         private User FindUser(int pUserId)
         {
-            User dummyUser = new User("test", "test", "Student");
-            return dummyUser;
+            string name = null;
+            string accessLevel = null;
+            XmlDocument usersDoc = new XmlDocument();
+            usersDoc.Load("XML_Files\\Users.xml");
+            foreach (XmlNode node in usersDoc.DocumentElement)
+            {
+                if (node.Attributes["id"].Value == pUserId.ToString())
+                {
+                    foreach (XmlNode childNode in node.ChildNodes)
+                    {
+                        if (childNode.NodeType == XmlNodeType.Element && childNode.Name == "name")
+                        {
+                            name = childNode.InnerText;
+                        }
+                        else if (childNode.NodeType == XmlNodeType.Element && childNode.Name == "accessLevel")
+                        {
+                            accessLevel = childNode.InnerText;
+                            break;
+                        }
+                    }
+                }
+            }
+            User user = new User(pUserId, name, accessLevel);
+            return user;
         }
     }
 }

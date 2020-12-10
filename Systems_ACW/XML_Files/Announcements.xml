@@ -1,12 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Announcements>
-	<announcement id="1" moduleId="">
+	<announcement id="1" moduleId="10052">
 		<title>First Announcement</title>
 		<body>This is the body of the first Announcement lkgsakjlfdlskjgfdlkjglkjsfdkglslkjg</body>
-		<posterID>0001</posterID>
-		<dateTimePosted>02/12/2020</dateTimePosted>
+		<posterID>586880</posterID>
+		<dateTimePosted>02/12/2020 15:42:01</dateTimePosted>
 		<comments>
-			<commentID>1001</commentID>
+			<commentID>1</commentID>
+		</comments>
+	</announcement>
+	<announcement id="2" moduleId="10052">
+		<title>Second Announcement</title>
+		<body>This is the body of the second Announcement lkgsakjlfdlskjgfdlkjglkjsfdkglsaaaaaaaaaaaaaaaaaaaaaaaaajg</body>
+		<posterID>586888</posterID>
+		<dateTimePosted>02/12/2020 17:25:41</dateTimePosted>
+		<comments>
+			<commentID>2</commentID>
+			<commentID>3</commentID>
 		</comments>
 	</announcement>
 </Announcements>

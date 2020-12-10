@@ -10,7 +10,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <TextBox x:Name="UsernameTextbox" HorizontalAlignment="Left" Height="23" Margin="254,88,0,0" TextWrapping="Wrap" Text="Username" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="StudentIdTextbox" HorizontalAlignment="Left" Height="23" Margin="254,88,0,0" TextWrapping="Wrap" Text="Student ID" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="PasswordTextbox" HorizontalAlignment="Left" Height="23" Margin="254,129,0,0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="LoginButton" Content="Log In" HorizontalAlignment="Left" Margin="276,182,0,0" VerticalAlignment="Top" Width="75" Click="LoginButton_Click"/>
         <Button x:Name="RegisterButton" Content="Button" HorizontalAlignment="Left" Margin="190,182,0,0" VerticalAlignment="Top" Width="75"/>

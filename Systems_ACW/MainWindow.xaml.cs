@@ -40,15 +40,46 @@ namespace Systems_ACW
             LogInWindow logInWindow = new LogInWindow();
             logInWindow.ShowDialog();
             //This is where the database check for login happens.
-            if (logInWindow.UsernameTextbox.Text == "Username" && logInWindow.PasswordTextbox.Text == "Password")
+            string name;
+            string accessLevel = null;
+            bool userFound = false;
+            XmlDocument usersDoc = new XmlDocument();
+            usersDoc.Load("XML_Files\\Users.xml");
+            foreach (XmlNode node in usersDoc.DocumentElement)
             {
-                currentUser = new User(logInWindow.UsernameTextbox.Text, logInWindow.PasswordTextbox.Text, "student");
-                return true;
-            } 
-            else
-            {
-                return false;
+                if (node.Attributes["id"].Value == logInWindow.StudentIdTextbox.Text)
+                {
+                    userFound = true;
+                    foreach (XmlNode childNode in node.ChildNodes)
+                    {
+                        if (childNode.NodeType == XmlNodeType.Element && childNode.Name == "name")
+                        {
+                            name = childNode.InnerText;
+                        }
+                        else if (childNode.NodeType == XmlNodeType.Element && childNode.Name == "password")
+                        {
+                            if (childNode.InnerText != logInWindow.PasswordTextbox.Text)
+                            {
+                                MessageBox.Show("Incorrect Password");
+                                return false;
+                            }
+                        }
+                        else if (childNode.NodeType == XmlNodeType.Element && childNode.Name == "accessLevel")
+                        {
+                            accessLevel = childNode.InnerText;
+                            break;
+                        }
+                    }
+                }
             }
+            if (userFound)
+            {
+                currentUser = new User(logInWindow.StudentIdTextbox.Text, accessLevel);
+                return true;
+            }
+            MessageBox.Show("Student ID not found");
+            return false;
+            
         }
 
         private void Module1Button_Click(object sender, RoutedEventArgs e)
@@ -96,10 +127,10 @@ namespace Systems_ACW
             string announcementBody = null;
             int posterId = 50;
             DateTime dateTimePosted = DateTime.Now;
-            List<Comment> announcementsComments = new List<Comment>();
             foreach(XmlNode node in xDoc.DocumentElement)
             {
                 string announcementIdString = node.Attributes[0].InnerText;
+                List<Comment> announcementsComments = new List<Comment>();
                 try
                 {
                     announcementId = Convert.ToInt32(announcementIdString);
@@ -139,7 +170,7 @@ namespace Systems_ACW
                             MessageBox.Show("DateTime Posted couldn't be converted to DateTime");
                         }
                     }
-                    if (childNode.NodeType == XmlNodeType.Element && childNode.Name == "Comments")
+                    if (childNode.NodeType == XmlNodeType.Element && childNode.Name == "comments")
                     {
                         XmlDocument commentsDoc = new XmlDocument();
                         commentsDoc.Load("XML_Files\\Comments.xml");
@@ -152,8 +183,12 @@ namespace Systems_ACW
                             }
                         }
                     }
-                }   
+                }
                 Announcement loadedAnnouncement = new Announcement(announcementId, announcementTitle, announcementBody, posterId, dateTimePosted);
+                foreach (Comment comment in announcementsComments)
+                {
+                    loadedAnnouncement.addComment(comment);
+                }
                 pModule.loadAnnouncement(loadedAnnouncement);
             }
         }
@@ -175,7 +210,7 @@ namespace Systems_ACW
                         {
                             body = childNode.InnerText;
                         }
-                        if (childNode.NodeType == XmlNodeType.Element && childNode.Name == "posterID")
+                        if (childNode.NodeType == XmlNodeType.Element && childNode.Name == "posterId")
                         {
                             try
                             {
@@ -198,7 +233,7 @@ namespace Systems_ACW
                             }
                         }
                     }
-                    newComment = new Comment(id, body, GetUSerFromID(posterId), pAnnouncementId, datePosted);
+                    newComment = new Comment(id, body, GetUserFromID(posterId), pAnnouncementId, datePosted);
                     break;
                 } 
                 else
@@ -209,10 +244,10 @@ namespace Systems_ACW
             return newComment;
         }
 
-        private User GetUSerFromID(int pUserId)
+        private User GetUserFromID(int pUserId)
         {
             string name = null;
-
+            string accessLevel = null;
             XmlDocument usersDoc = new XmlDocument();
             usersDoc.Load("XML_Files\\Users.xml");
             foreach (XmlNode node in usersDoc.DocumentElement)
@@ -225,32 +260,15 @@ namespace Systems_ACW
                         {
                             name = childNode.InnerText;
                         }
-                        if (childNode.NodeType == XmlNodeType.Element && childNode.Name == "posterID")
+                        else if (childNode.NodeType == XmlNodeType.Element && childNode.Name == "accessLevel")
                         {
-                            try
-                            {
-                                posterId = Convert.ToInt32(childNode.InnerText);
-                            }
-                            catch
-                            {
-                                MessageBox.Show("Poster ID couldn't be converted to int");
-                            }
-                        }
-                        if (childNode.NodeType == XmlNodeType.Element && childNode.Name == "datePosted")
-                        {
-                            try
-                            {
-                                datePosted = Convert.ToDateTime(childNode.InnerText);
-                            }
-                            catch
-                            {
-                                MessageBox.Show("DateTime Posted couldn't be converted to DateTime");
-                            }
+                            accessLevel = childNode.InnerText;
+                            break;
                         }
                     }
                 }
             }
-            User user;
+            User user = new User(pUserId, name, accessLevel);
             return user;
         }
     }
