@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<comments>
+	<comment id="1">
+		<body>this is a comment</body>
+		<posterId>586880</posterId>
+		<datePosted>03/12/2020 12:04:54</datePosted>
+		<replies>
+			<replyId>1</replyId>
+		</replies>
+	</comment>
+	<comment id="2">
+		<body>this is comment number 2</body>
+		<posterId>586880</posterId>
+		<datePosted>03/12/2020 12:05:34</datePosted>
+		<replies>
+			<replyId>2</replyId>
+		</replies>
+	</comment>
+	<comment id="3">
+		<body>this is comment number 3</body>
+		<posterId>586880</posterId>
+		<datePosted>03/12/2020 14:05:34</datePosted>
+		<replies>
+			<replyId>3</replyId>
+		</replies>
+	</comment>
+</comments>

@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<users>
+	<user id="586880">
+		<name>Alex Imm</name>
+		<password>123456</password>
+		<accessLevel>Student</accessLevel>
+		<moduleIds>
+			<moduleId>10052</moduleId>
+			<moduleId>10053</moduleId>
+			<moduleId>10054</moduleId>
+		</moduleIds>
+	</user>
+	<user id="586888">
+		<name>James Turner</name>
+		<password>password</password>
+		<accessLevel>Teacher</accessLevel>
+		<moduleIds>
+			<moduleId>10052</moduleId>
+			<moduleId>10053</moduleId>
+			<moduleId>10054</moduleId>
+		</moduleIds>
+	</user>
+</users>

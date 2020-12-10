@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Alex Imm\Desktop\Uni Computer Science\Systems_ACW\Systems_ACW\obj\Debug\
+C:\Users\Alex Imm\Desktop\Uni_Computer_Science\Systems_ACW\Systems_ACW\obj\Debug\
 Systems_ACW
 none
 false
 DEBUG;TRACE
-C:\Users\Alex Imm\Desktop\Uni Computer Science\Systems_ACW\Systems_ACW\App.xaml
-11151548125
+C:\Users\Alex Imm\Desktop\Uni_Computer_Science\Systems_ACW\Systems_ACW\App.xaml
+4843799770
 
-1220360369
+14-1103622365
 13-1505183044
-MainWindow.xaml;
+AnnouncementsWindow.xaml;LogInWindow.xaml;MainWindow.xaml;StudentInfoWindow.xaml;
 
 False
 

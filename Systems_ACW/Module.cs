@@ -6,33 +6,49 @@ using System.Threading.Tasks;
 
 namespace Systems_ACW
 {
-    class Module
+    public class Module
     {
-        List<Student> students;
-        List<Teacher> teachers;
+        List<User> members;
         List<Announcement> announcements;
         string name;
         int id;
-        
+
+        public int ID { get { return id; } }
+        public List<Announcement> Announcements { get { return announcements; } }
         public Module(string pName, int pID)
         {
             name = pName;
             id = pID;
+            announcements = new List<Announcement>();
         }
 
-        public void AddPerson(Student student)
+        public void AddPerson(User pUser)
         {
-            students.Add(student);
+            members.Add(pUser);
         }
 
-        public void AddPerson(Teacher teacher) 
+        public void RemoveStudent(User pUser)
         {
-            teachers.Add(teacher);
+            members.Remove(pUser);
         }
 
-        public void RemoveStudent(Student student)
+        public bool addAnnouncement(string pTitle, string pBody, User user)
         {
-            students.Remove(student);
+            try
+            {
+                Announcement newAnnouncement = new Announcement(pTitle, pBody, user);
+                announcements.Add(newAnnouncement);
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public void loadAnnouncement(Announcement pAnnouncement)
+        {
+            announcements.Add(pAnnouncement);
         }
     }
 }

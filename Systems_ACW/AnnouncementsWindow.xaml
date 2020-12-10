@@ -1,0 +1,109 @@
+﻿<Window x:Class="Systems_ACW.AnnouncementsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Systems_ACW"
+        mc:Ignorable="d"
+        Title="AnnouncementsWindow" Height="400" Width="500">
+    <Grid Margin="1">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="6*"/>
+            </Grid.RowDefinitions>
+            <Viewbox>
+                <TextBlock Grid.Row="0" Text ="Past Announcements"/>
+            </Viewbox>
+            <ListView Grid.Row="1" x:Name="AnnouncementsBox" ScrollViewer.VerticalScrollBarVisibility="Visible" SelectionMode="Single" SelectionChanged="AnnouncementsBox_SelectionChanged">
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <UniformGrid Columns="1"/>
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <DockPanel>
+                            <TextBlock DockPanel.Dock="Top"  VerticalAlignment="Top" HorizontalAlignment="Center" Text="{Binding Title}"></TextBlock>
+                        </DockPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="2*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Viewbox>
+                        <TextBlock x:Name="PosterTextBlock"></TextBlock>
+                    </Viewbox>
+                </Grid>
+                <Viewbox Grid.Row="1">
+                    <TextBlock x:Name="TitleTextBlock"></TextBlock>
+                </Viewbox>
+            </Grid>
+            <TextBlock Grid.Row="1"  FontSize="20" x:Name="BodyTextBlock" TextWrapping="Wrap"/>
+                <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="4*"/>
+                    </Grid.RowDefinitions>
+                    <Viewbox Grid.Row="0">
+                        <TextBlock Text ="Comments"/>
+                    </Viewbox>
+                    <ListView Grid.Row="1" x:Name="CommentsBox" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionMode="Single">
+                        <ListView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <UniformGrid Columns="1"/>
+                            </ItemsPanelTemplate>
+                        </ListView.ItemsPanel>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <DockPanel>
+                                    <TextBlock DockPanel.Dock="Top"  VerticalAlignment="Top" HorizontalAlignment="Center" Text="{Binding Body}"></TextBlock>
+                                </DockPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="3*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Viewbox>
+                        <TextBlock Grid.Row="0" Text ="Reply"/>
+                    </Viewbox>
+                    <TextBox x:Name="ReplyTextbox" Grid.Row="1"/>
+                    <Button x:Name="ReplyButton" Grid.Row="2" Click="ReplyButton_Click">
+                        <Viewbox>
+                            <TextBlock>Reply</TextBlock>
+                        </Viewbox>
+                    </Button>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
