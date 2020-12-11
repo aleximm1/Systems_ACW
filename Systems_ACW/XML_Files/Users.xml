@@ -12,7 +12,7 @@
 	</user>
 	<user id="586888">
 		<name>James Turner</name>
-		<password>password</password>
+		<password>Password</password>
 		<accessLevel>Teacher</accessLevel>
 		<moduleIds>
 			<moduleId>10052</moduleId>
@@ -22,7 +22,7 @@
 	</user>
 	<user id="586777">
 		<name>Jeff Jones</name>
-		<password>password</password>
+		<password>Password</password>
 		<accessLevel>Admin</accessLevel>
 		<moduleIds>
 			<moduleId>10052</moduleId>

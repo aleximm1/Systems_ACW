@@ -19,13 +19,20 @@ namespace Systems_ACW
         public string AccessLevel { get { return accessLevel; } }
         public List<Module> Modules { get { return modules; } }
 
-        public User(string pName, string pAccessLevel)
+        public User(string pId, string pAccessLevel)
         {
-            name = pName;
+            try
+            {
+                id = Convert.ToInt32(pId);
+            }
+            catch
+            {
+
+            }
             accessLevel = pAccessLevel;
-            Module aiModule = new Module("AI", 00051);
-            Module twoDGraphicsModule = new Module("2D Graphics", 00052);
-            Module computerSystemsModule = new Module("Computer Systems", 00053);
+            Module aiModule = new Module("AI", 50051);
+            Module twoDGraphicsModule = new Module("2D Graphics", 50052);
+            Module computerSystemsModule = new Module("Computer Systems", 50053);
             modules.Add(aiModule);
             modules.Add(twoDGraphicsModule);
             modules.Add(computerSystemsModule);
@@ -36,9 +43,9 @@ namespace Systems_ACW
             name = pName;
             id = pId;
             accessLevel = pAccessLevel;
-            Module aiModule = new Module("AI", 00051);
-            Module twoDGraphicsModule = new Module("2D Graphics", 00052);
-            Module computerSystemsModule = new Module("Computer Systems", 00053);
+            Module aiModule = new Module("AI", 50051);
+            Module twoDGraphicsModule = new Module("2D Graphics", 50052);
+            Module computerSystemsModule = new Module("Computer Systems", 50053);
             modules.Add(aiModule);
             modules.Add(twoDGraphicsModule);
             modules.Add(computerSystemsModule);

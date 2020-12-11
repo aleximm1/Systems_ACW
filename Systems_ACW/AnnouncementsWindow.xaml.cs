@@ -20,11 +20,13 @@ namespace Systems_ACW
     public partial class AnnouncementsWindow : Window
     {
         private User currentUser;
+        private Module currentModule;
         private Announcement currentlySelectedAnnouncement;
-        public AnnouncementsWindow(User pCurrentUser, Module currentModule)
+        public AnnouncementsWindow(User pCurrentUser, Module pCurrentModule)
         {
             InitializeComponent();
             currentUser = pCurrentUser;
+            currentModule = pCurrentModule;
             Announcement selectedAnnouncement = currentModule.Announcements[0];
             for (int i = 0; i < currentModule.Announcements.Count(); i++)
             {
@@ -33,6 +35,7 @@ namespace Systems_ACW
             }
             if (currentUser.AccessLevel == "Teacher" || currentUser.AccessLevel == "Admin")
             {
+                NewAnnouncementButton.Visibility = Visibility.Visible;
                 NewAnnouncementButton.IsEnabled = true;
             }
         }
@@ -67,8 +70,13 @@ namespace Systems_ACW
 
         private void NewAnnouncementButton_Click(object sender, RoutedEventArgs e)
         {
-            NewAnnouncementWindow newAnnouncementWindow = new NewAnnouncementWindow();
-            newAnnouncementWindow.ShowDialog();
+            NewAnnouncementWindow newAnnouncementWindow = new NewAnnouncementWindow(currentUser, currentModule);
+            bool? result = newAnnouncementWindow.ShowDialog();
+            if (result != true)
+            {
+                currentModule.LoadAnnouncement(newAnnouncementWindow.announcement);
+                currentModule.SaveAnnouncement(newAnnouncementWindow.announcement, currentModule);
+            }
         }
     }
 }

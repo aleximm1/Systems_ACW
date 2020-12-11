@@ -14,13 +14,14 @@ namespace Systems_ACW
         private string body;
         private User poster;
         private DateTime dateTimePosted;
-        private DateTime timeSinceLastComment;
+        private DateTime timeOfLastComment;
         private List<Comment> comments;
 
         public User Poster { get { return poster; } }
         public string Title { get { return title; } }
         public int ID { get { return id; } }
         public string Body { get { return body; } }
+        public DateTime DateTimePosted { get { return dateTimePosted; } }
         public List<Comment> Comments { get { return comments; } }
         public Announcement(string pTitle, string pBody, User pPoster)
         {
@@ -42,42 +43,58 @@ namespace Systems_ACW
             title = pTitle;
             body = pBody;
             poster = pPoster;
-            timeSinceLastComment = DateTime.Now;
+            dateTimePosted = DateTime.Now;
+            timeOfLastComment = DateTime.Now;
             comments = new List<Comment>();
         }
 
-        public Announcement(int pId, string pTitle, string pBody, int pPosterID, DateTime pDateTime)
+        public Announcement(string pTitle, string pBody, int pPosterID, DateTime pDateTime)
         {
-            int lastID = 0;
+            int highestID = 0;
             XmlDocument xDoc = new XmlDocument();
             xDoc.Load(".\\XML_Files\\Announcements.xml");
+            int announcementId = 0;
             foreach (XmlNode node in xDoc.DocumentElement)
             {
                 string announcementIdString = node.Attributes[0].InnerText;
                 try
                 {
-                    lastID = Convert.ToInt32(announcementIdString);
+                    announcementId = Convert.ToInt32(announcementIdString);
+                    if (announcementId>highestID)
+                    {
+                        highestID = announcementId;
+                    }
                 }
                 catch
                 {
 
                 }
             }
+            id = highestID+1;
+            title = pTitle;
+            body = pBody;
+            poster = FindUser(pPosterID);
+            dateTimePosted = pDateTime;
+            comments = new List<Comment>();
+        }
+
+        public Announcement(int pId, string pTitle, string pBody, int pPosterID, DateTime pDateTime)
+        {
             id = pId;
             title = pTitle;
             body = pBody;
             poster = FindUser(pPosterID);
-            timeSinceLastComment = DateTime.Now;
+            dateTimePosted = pDateTime;
             comments = new List<Comment>();
         }
 
-        public bool addComment(Comment pComment)
+        public bool AddComment(Comment pComment)
         {
             try
             {
                 comments.Add(pComment);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }

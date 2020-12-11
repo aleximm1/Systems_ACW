@@ -104,6 +104,7 @@ namespace Systems_ACW
 
         private void Module2Button_Click(object sender, RoutedEventArgs e)
         {
+            LoadModulesAnnouncements(currentUser.Modules[1]);
             AnnouncementsWindow announcementsWindow = new AnnouncementsWindow(currentUser, currentUser.Modules[1]);
             Visibility = Visibility.Hidden;
             announcementsWindow.ShowDialog();
@@ -112,6 +113,7 @@ namespace Systems_ACW
 
         private void Module3Button_Click(object sender, RoutedEventArgs e)
         {
+            LoadModulesAnnouncements(currentUser.Modules[2]);
             AnnouncementsWindow announcementsWindow = new AnnouncementsWindow(currentUser, currentUser.Modules[2]);
             Visibility = Visibility.Hidden;
             announcementsWindow.ShowDialog();
@@ -187,9 +189,9 @@ namespace Systems_ACW
                 Announcement loadedAnnouncement = new Announcement(announcementId, announcementTitle, announcementBody, posterId, dateTimePosted);
                 foreach (Comment comment in announcementsComments)
                 {
-                    loadedAnnouncement.addComment(comment);
+                    loadedAnnouncement.AddComment(comment);
                 }
-                pModule.loadAnnouncement(loadedAnnouncement);
+                pModule.LoadAnnouncement(loadedAnnouncement);
             }
         }
 
