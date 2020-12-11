@@ -20,4 +20,14 @@
 			<moduleId>10054</moduleId>
 		</moduleIds>
 	</user>
+	<user id="586777">
+		<name>Jeff Jones</name>
+		<password>password</password>
+		<accessLevel>Admin</accessLevel>
+		<moduleIds>
+			<moduleId>10052</moduleId>
+			<moduleId>10053</moduleId>
+			<moduleId>10054</moduleId>
+		</moduleIds>
+	</user>
 </users>

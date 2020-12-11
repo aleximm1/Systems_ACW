@@ -31,6 +31,10 @@ namespace Systems_ACW
                 AnnouncementsBox.Items.Add(currentModule.Announcements[i]);
                 FillCommentsBox(selectedAnnouncement);
             }
+            if (currentUser.AccessLevel == "Teacher" || currentUser.AccessLevel == "Admin")
+            {
+                NewAnnouncementButton.IsEnabled = true;
+            }
         }
 
         private void FillCommentsBox(Announcement pAnnouncement)
@@ -59,6 +63,12 @@ namespace Systems_ACW
         private void ReplyButton_Click(object sender, RoutedEventArgs e)
         {
             Comment newComment = new Comment(ReplyTextbox.Text, currentUser, currentlySelectedAnnouncement);
+        }
+
+        private void NewAnnouncementButton_Click(object sender, RoutedEventArgs e)
+        {
+            NewAnnouncementWindow newAnnouncementWindow = new NewAnnouncementWindow();
+            newAnnouncementWindow.ShowDialog();
         }
     }
 }
