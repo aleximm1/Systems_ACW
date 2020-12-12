@@ -5,15 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Systems_ACW"
         mc:Ignorable="d"
-        Title="LogInWindow" Height="450" Width="800">
-    <Grid>
+        Title="LogInWindow" Height="146.218" Width="167.227">
+    <Grid RenderTransformOrigin="0.5,0.5" Margin="0,0,0,1">
+        <Grid.RenderTransform>
+            <TransformGroup>
+                <ScaleTransform/>
+                <SkewTransform/>
+                <RotateTransform Angle="0.092"/>
+                <TranslateTransform/>
+            </TransformGroup>
+        </Grid.RenderTransform>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <TextBox x:Name="StudentIdTextbox" HorizontalAlignment="Left" Height="23" Margin="254,88,0,0" TextWrapping="Wrap" Text="Student ID" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="PasswordTextbox" HorizontalAlignment="Left" Height="23" Margin="254,129,0,0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="LoginButton" Content="Log In" HorizontalAlignment="Left" Margin="276,182,0,0" VerticalAlignment="Top" Width="75" Click="LoginButton_Click"/>
-        <Button x:Name="RegisterButton" Content="Button" HorizontalAlignment="Left" Margin="190,182,0,0" VerticalAlignment="Top" Width="75"/>
+        <TextBox x:Name="StudentIdTextbox" HorizontalAlignment="Left" Height="23" Margin="21,15,0,0" TextWrapping="Wrap" Text="Student ID" VerticalAlignment="Top" Width="120"/>
+        <PasswordBox x:Name="PasswordTextbox" HorizontalAlignment="Left" Height="23" Margin="21,43,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="LoginButton" Content="Log In" HorizontalAlignment="Left" Margin="36,74,0,0" VerticalAlignment="Top" Width="75" Click="LoginButton_Click"/>
 
     </Grid>
 </Window>

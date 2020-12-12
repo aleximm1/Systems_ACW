@@ -55,6 +55,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AdminMenuWindow.xaml.cs">
+      <DependentUpon>AdminMenuWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Announcement.cs" />
     <Compile Include="AnnouncementsWindow.xaml.cs">
       <DependentUpon>AnnouncementsWindow.xaml</DependentUpon>
@@ -71,6 +74,10 @@
     <Compile Include="StudentInfoWindow.xaml.cs">
       <DependentUpon>StudentInfoWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="AdminMenuWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AnnouncementsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

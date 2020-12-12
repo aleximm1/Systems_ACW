@@ -73,7 +73,7 @@
                     <Viewbox Grid.Row="0">
                         <TextBlock Text ="Comments"/>
                     </Viewbox>
-                    <ListView Grid.Row="1" x:Name="CommentsBox" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionMode="Single">
+                    <ListView Grid.Row="1" x:Name="CommentsBox" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionMode="Single" SelectionChanged="CommentsBox_SelectionChanged">
                         <ListView.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <UniformGrid Columns="1"/>
@@ -95,12 +95,12 @@
                         <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
                     <Viewbox>
-                        <TextBlock Grid.Row="0" Text ="Reply"/>
+                        <TextBlock Grid.Row="0" Text ="Comment"/>
                     </Viewbox>
-                    <TextBox x:Name="ReplyTextbox" Grid.Row="1"/>
-                    <Button x:Name="ReplyButton" Grid.Row="2" Click="ReplyButton_Click">
+                    <TextBox x:Name="CommentTextbox" Grid.Row="1"/>
+                    <Button x:Name="CommentButton" Grid.Row="2" Click="CommentButton_Click">
                         <Viewbox>
-                            <TextBlock>Reply</TextBlock>
+                            <TextBlock Text="Comment"/>
                         </Viewbox>
                     </Button>
                 </Grid>

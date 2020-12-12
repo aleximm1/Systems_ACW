@@ -27,11 +27,15 @@ namespace Systems_ACW
             InitializeComponent();
             currentUser = pCurrentUser;
             currentModule = pCurrentModule;
-            Announcement selectedAnnouncement = currentModule.Announcements[0];
+            currentlySelectedAnnouncement = currentModule.Announcements[0];
             for (int i = 0; i < currentModule.Announcements.Count(); i++)
             {
-                AnnouncementsBox.Items.Add(currentModule.Announcements[i]);
-                FillCommentsBox(selectedAnnouncement);
+                if (currentModule.Announcements[i].ModuleID == currentModule.ID)
+                {
+                    AnnouncementsBox.Items.Add(currentModule.Announcements[i]);
+                }
+                ChangeSelectedAnnouncement(currentlySelectedAnnouncement);
+                FillCommentsBox(currentlySelectedAnnouncement);
             }
             if (currentUser.AccessLevel == "Teacher" || currentUser.AccessLevel == "Admin")
             {
@@ -63,9 +67,9 @@ namespace Systems_ACW
             FillCommentsBox(currentlySelectedAnnouncement);
         }
 
-        private void ReplyButton_Click(object sender, RoutedEventArgs e)
+        private void CommentButton_Click(object sender, RoutedEventArgs e)
         {
-            Comment newComment = new Comment(ReplyTextbox.Text, currentUser, currentlySelectedAnnouncement);
+            Comment newComment = new Comment(CommentTextbox.Text, currentUser, currentlySelectedAnnouncement);
         }
 
         private void NewAnnouncementButton_Click(object sender, RoutedEventArgs e)
@@ -77,6 +81,11 @@ namespace Systems_ACW
                 currentModule.LoadAnnouncement(newAnnouncementWindow.announcement);
                 currentModule.SaveAnnouncement(newAnnouncementWindow.announcement, currentModule);
             }
+        }
+
+        private void CommentsBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

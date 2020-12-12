@@ -26,7 +26,7 @@
     <dateTimePosted>11/12/2020 20:11:00</dateTimePosted>
     <comments />
   </announcement>
-  <announcement id="4" moduleId="50051">
+  <announcement id="4" moduleId="50053">
     <title>Second Test Announcements Title</title>
     <body>Second Test Announcements Body</body>
     <posterID>586888</posterID>

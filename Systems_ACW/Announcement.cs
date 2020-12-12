@@ -10,6 +10,7 @@ namespace Systems_ACW
     public class Announcement
     {
         private int id;
+        private int moduleId;
         private string title;
         private string body;
         private User poster;
@@ -20,35 +21,13 @@ namespace Systems_ACW
         public User Poster { get { return poster; } }
         public string Title { get { return title; } }
         public int ID { get { return id; } }
+        public int ModuleID { get { return moduleId; } }
         public string Body { get { return body; } }
         public DateTime DateTimePosted { get { return dateTimePosted; } }
         public List<Comment> Comments { get { return comments; } }
-        public Announcement(string pTitle, string pBody, User pPoster)
-        {
-            int lastID = 0;
-            XmlDocument xDoc = new XmlDocument();
-            xDoc.Load(".\\XML_Files\\Announcements.xml");
-            foreach (XmlNode node in xDoc.DocumentElement)
-            {
-                string announcementIdString = node.Attributes[0].InnerText;
-                try
-                {
-                    lastID = Convert.ToInt32(announcementIdString);
-                }
-                catch
-                {
-                }
-            }
-            id = lastID++;
-            title = pTitle;
-            body = pBody;
-            poster = pPoster;
-            dateTimePosted = DateTime.Now;
-            timeOfLastComment = DateTime.Now;
-            comments = new List<Comment>();
-        }
 
-        public Announcement(string pTitle, string pBody, int pPosterID, DateTime pDateTime)
+        //Constructor for when a new announcement is being added
+        public Announcement(string pTitle, string pBody, int pPosterID, int pModuleID, DateTime pDateTime)
         {
             int highestID = 0;
             XmlDocument xDoc = new XmlDocument();
@@ -74,16 +53,19 @@ namespace Systems_ACW
             title = pTitle;
             body = pBody;
             poster = FindUser(pPosterID);
+            moduleId = pModuleID;
             dateTimePosted = pDateTime;
             comments = new List<Comment>();
         }
 
-        public Announcement(int pId, string pTitle, string pBody, int pPosterID, DateTime pDateTime)
+        //Constructor for when an existing announcement is loaded from the Announcements.xml file
+        public Announcement(int pId, string pTitle, string pBody, int pPosterID, int pModuleId, DateTime pDateTime)
         {
             id = pId;
             title = pTitle;
             body = pBody;
             poster = FindUser(pPosterID);
+            moduleId = pModuleId;
             dateTimePosted = pDateTime;
             comments = new List<Comment>();
         }

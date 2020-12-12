@@ -33,6 +33,11 @@ namespace Systems_ACW
                 logInFailed = attemptLogIn();
             }
             Visibility = Visibility.Visible;
+            if (currentUser.AccessLevel == "Admin")
+            {
+                AdminMenuButton.Visibility = Visibility.Visible;
+                AdminMenuButton.IsEnabled = true;
+            }
         }
 
         private bool attemptLogIn()
@@ -58,7 +63,7 @@ namespace Systems_ACW
                         }
                         else if (childNode.NodeType == XmlNodeType.Element && childNode.Name == "password")
                         {
-                            if (childNode.InnerText != logInWindow.PasswordTextbox.Text)
+                            if (childNode.InnerText != logInWindow.PasswordTextbox.Password)
                             {
                                 MessageBox.Show("Incorrect Password");
                                 return false;
@@ -85,16 +90,6 @@ namespace Systems_ACW
         private void Module1Button_Click(object sender, RoutedEventArgs e)
         {
             int moduleID = currentUser.Modules[0].ID;
-            //currentUser.Modules[0].addAnnouncement("Title", "Body.");
-            //currentUser.Modules[0].addAnnouncement("Title2", "This is the body of the second announcement.");
-            //currentUser.Modules[0].addAnnouncement("Title3", "Body of announcement number 3.");
-            //currentUser.Modules[0].Announcements[0].addComment("This is a test comment", currentUser);
-            //currentUser.Modules[0].Announcements[0].addComment("This is also a test comment", currentUser);
-            //currentUser.Modules[0].Announcements[2].addComment("This is also a test commentaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", currentUser);
-            //currentUser.Modules[0].Announcements[0].addComment("This is also a test comment", currentUser);
-            //currentUser.Modules[0].Announcements[0].addComment("This is also a test comment", currentUser);
-            //currentUser.Modules[0].Announcements[1].addComment("This is also a test comment", currentUser);
-            //currentUser.Modules[0].Announcements[2].addComment("This is also a test comment", currentUser);
             LoadModulesAnnouncements(currentUser.Modules[0]);
             AnnouncementsWindow announcementsWindow = new AnnouncementsWindow(currentUser, currentUser.Modules[0]);
             Visibility = Visibility.Hidden;
@@ -120,11 +115,21 @@ namespace Systems_ACW
             Visibility = Visibility.Visible;
         }
 
+        private void AdminMenuButton_Click(object sender, RoutedEventArgs e)
+        {
+            AdminMenuWindow adminMenuWindow = new AdminMenuWindow(currentUser);
+            Visibility = Visibility.Hidden;
+            adminMenuWindow.ShowDialog();
+            Visibility = Visibility.Visible;
+        }
+
         private void LoadModulesAnnouncements(Module pModule)
         {
+            pModule.ResetAnnouncements();
             XmlDocument xDoc = new XmlDocument();
             xDoc.Load("XML_Files\\Announcements.xml");
             int announcementId = 50;
+            int moduleId = 0;
             string announcementTitle = null;
             string announcementBody = null;
             int posterId = 50;
@@ -132,11 +137,20 @@ namespace Systems_ACW
             foreach(XmlNode node in xDoc.DocumentElement)
             {
                 string announcementIdString = node.Attributes[0].InnerText;
+                string moduleIdString = node.Attributes[1].InnerText;
                 List<Comment> announcementsComments = new List<Comment>();
                 try
                 {
                     announcementId = Convert.ToInt32(announcementIdString);
                 } catch
+                {
+                    MessageBox.Show("Announcement ID couldn't be converted to int");
+                }
+                try
+                {
+                    moduleId = Convert.ToInt32(moduleIdString);
+                }
+                catch
                 {
                     MessageBox.Show("Announcement ID couldn't be converted to int");
                 }
@@ -186,12 +200,15 @@ namespace Systems_ACW
                         }
                     }
                 }
-                Announcement loadedAnnouncement = new Announcement(announcementId, announcementTitle, announcementBody, posterId, dateTimePosted);
+                Announcement loadedAnnouncement = new Announcement(announcementId, announcementTitle, announcementBody, posterId, moduleId, dateTimePosted);
                 foreach (Comment comment in announcementsComments)
                 {
                     loadedAnnouncement.AddComment(comment);
                 }
-                pModule.LoadAnnouncement(loadedAnnouncement);
+                if (pModule.ID == moduleId)
+                {
+                    pModule.LoadAnnouncement(loadedAnnouncement);
+                }
             }
         }
 

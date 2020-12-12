@@ -34,23 +34,13 @@ namespace Systems_ACW
             members.Remove(pUser);
         }
 
-        public bool AddAnnouncement(string pTitle, string pBody, User user)
-        {
-            try
-            {
-                Announcement newAnnouncement = new Announcement(pTitle, pBody, user);
-                announcements.Add(newAnnouncement);
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-            return true;
-        }
-
         public void LoadAnnouncement(Announcement pAnnouncement)
         {
             announcements.Add(pAnnouncement);
+        }
+        public void ResetAnnouncements()
+        {
+            announcements = new List<Announcement>();
         }
 
         public void SaveAnnouncement(Announcement pAnnouncement, Module pCurrentModule)

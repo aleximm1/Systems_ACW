@@ -32,7 +32,7 @@ namespace Systems_ACW
 
         private void PostAnnouncementButton_Click(object sender, RoutedEventArgs e)
         {
-            announcement = new Announcement(TitleTextbox.Text, BodyTextbox.Text, currentUser.Id, DateTime.Now);
+            announcement = new Announcement(TitleTextbox.Text, BodyTextbox.Text, currentUser.Id, currentModule.ID, DateTime.Now);
             this.DialogResult = true;
         }
     }

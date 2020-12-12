@@ -11,5 +11,6 @@
         <Button x:Name="Module1Button" Content="AI" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="110" Height="106" Click="Module1Button_Click"/>
         <Button x:Name="Module2Button" Content="2D Graphics" HorizontalAlignment="Left" Margin="133,10,0,0" VerticalAlignment="Top" Width="111" Height="106" Click="Module2Button_Click"/>
         <Button x:Name="Module3Button" Content="Computer Systems" HorizontalAlignment="Left" Margin="260,10,0,0" VerticalAlignment="Top" Width="110" Height="106" Click="Module3Button_Click"/>
+        <Button x:Name="AdminMenuButton" Visibility="Hidden" IsEnabled="False" Content="Admin Menu" HorizontalAlignment="Left" VerticalAlignment="Top" Width="109" Margin="10,129,0,0" Height="28" Click="AdminMenuButton_Click"/>
     </Grid>
 </Window>
