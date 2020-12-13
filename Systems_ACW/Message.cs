@@ -15,5 +15,12 @@ namespace Systems_ACW
         public string Sender { get { return sender; } }
         public string Body { get { return body; } }
         public DateTime Timestamp { get { return timestamp; } }
+
+        public Message(string pSender, string pBody, DateTime pTimestamp)
+        {
+            sender = pSender;
+            body = pBody;
+            timestamp = pTimestamp;
+        }
     }
 }

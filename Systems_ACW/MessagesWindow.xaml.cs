@@ -56,13 +56,62 @@ namespace Systems_ACW
 
         private void ChangeSelectedUser()
         {
-            
+            MessagesBox.Items.Clear();
+            XmlDocument dmsDoc = new XmlDocument();
+            dmsDoc.Load("..\\..\\XML_Files\\DMs.xml");
+            XmlNode currentDmNode = dmsDoc.DocumentElement;
+            bool dmFound = false;
+            foreach (XmlNode dmNode in dmsDoc.DocumentElement)
+            {
+                if ((dmNode.Attributes[0].InnerText == currentUser.Id.ToString() || dmNode.Attributes[1].InnerText == currentUser.Id.ToString()) && (dmNode.Attributes[0].InnerText == currentlySelectedUser.Id.ToString() || dmNode.Attributes[1].InnerText == currentlySelectedUser.Id.ToString()))
+                {
+                    dmFound = true;
+                    currentDmNode = dmNode;
+                }
+                else
+                {
+                    continue;
+                }
+            }
+            if (!dmFound)
+            {
+                CreateDM();
+                dmsDoc.Load("..\\..\\XML_Files\\DMs.xml");
+                foreach (XmlNode dmNode in dmsDoc.DocumentElement)
+                {
+                    if ((dmNode.Attributes[0].InnerText == currentUser.Id.ToString() || dmNode.Attributes[1].InnerText == currentUser.Id.ToString()) && (dmNode.Attributes[0].InnerText == currentlySelectedUser.Id.ToString() || dmNode.Attributes[1].InnerText == currentlySelectedUser.Id.ToString()))
+                    {
+                        currentDmNode = dmNode;
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                }
+            }
+            foreach(XmlNode messageNode in currentDmNode.ChildNodes)
+            {
+                Message message = new Message(messageNode.Attributes[0].InnerText, messageNode.FirstChild.InnerText, Convert.ToDateTime(messageNode.LastChild.InnerText));
+                MessagesBox.Items.Add(message);
+            }
         }
 
         private void UsersBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             currentlySelectedUser = (User)UsersBox.SelectedItem;
             ChangeSelectedUser();
+        }
+
+        private void CreateDM()
+        {
+            XmlDocument dmsDoc = new XmlDocument();
+            dmsDoc.Load("..\\..\\XML_Files\\DMs.xml");
+            XmlElement root = dmsDoc.DocumentElement;
+            XmlElement DMElem = dmsDoc.CreateElement("DM");
+            DMElem.SetAttribute("id1", currentUser.Id.ToString());
+            DMElem.SetAttribute("id2", currentlySelectedUser.Id.ToString());
+            root.AppendChild(DMElem);
+            dmsDoc.Save("..\\..\\XML_Files\\DMs.xml");
         }
 
         private void SendButton_Click(object sender, RoutedEventArgs e)

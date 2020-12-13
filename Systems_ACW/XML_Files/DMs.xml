@@ -1,13 +1,14 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <DMs>
-	<DM id1="586777" id2="586880">
-		<message senderid="586777">
-			<body>This is a direct message from Jeff Jones</body>
-			<timestamp>13/12/2020 20:11:00</timestamp>
-		</message>
-		<message senderid="586880">
-			<body>This is a direct message from Alex Imm</body>
-			<timestamp>13/12/2020 21:11:00</timestamp>
-		</message>
-	</DM>
+  <DM id1="586777" id2="586880">
+    <message senderid="586777">
+      <body>This is a direct message from Jeff Jones</body>
+      <timestamp>13/12/2020 20:11:00</timestamp>
+    </message>
+    <message senderid="586880">
+      <body>This is a direct message from Alex Imm</body>
+      <timestamp>13/12/2020 21:11:00</timestamp>
+    </message>
+  </DM>
+  <DM id1="586777" id2="586888" />
 </DMs>
