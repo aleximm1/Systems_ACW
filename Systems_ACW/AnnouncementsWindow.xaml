@@ -82,6 +82,7 @@
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <DockPanel>
+                                    <TextBlock DockPanel.Dock="Top"  VerticalAlignment="Top" HorizontalAlignment="Center" Text="{Binding Poster.Name}"></TextBlock>
                                     <TextBlock DockPanel.Dock="Top"  VerticalAlignment="Top" HorizontalAlignment="Center" Text="{Binding Body}"></TextBlock>
                                 </DockPanel>
                             </DataTemplate>

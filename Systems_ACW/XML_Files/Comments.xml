@@ -15,20 +15,9 @@
     <posterId>586880</posterId>
     <datePosted>03/12/2020 14:05:34</datePosted>
   </comment>
-  <comment id="0">
-    <body>
-    </body>
-    <posterID>586777</posterID>
-    <datePosted>12/12/2020 21:17:16</datePosted>
-  </comment>
-  <comment id="0">
-    <body>asd</body>
-    <posterID>586777</posterID>
-    <datePosted>12/12/2020 21:21:42</datePosted>
-  </comment>
-  <comment id="0">
-    <body>\zx</body>
-    <posterID>586777</posterID>
-    <datePosted>12/12/2020 21:22:21</datePosted>
+  <comment id="4">
+    <body>This is a Comment test</body>
+    <posterId>586777</posterId>
+    <datePosted>13/12/2020 22:58:32</datePosted>
   </comment>
 </comments>

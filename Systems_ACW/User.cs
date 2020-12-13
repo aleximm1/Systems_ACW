@@ -40,8 +40,8 @@ namespace Systems_ACW
 
         public User(int pId, string pName, string pAccessLevel)
         {
-            name = pName;
             id = pId;
+            name = pName;
             accessLevel = pAccessLevel;
             Module aiModule = new Module("AI", 50051);
             Module twoDGraphicsModule = new Module("2D Graphics", 50052);

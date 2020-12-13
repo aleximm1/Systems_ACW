@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Systems_ACW"
         mc:Ignorable="d"
-        Title="AdminMenuWindow" Height="450" Width="800">
+        Title="AdminMenuWindow" Height="257.752" Width="546.977">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>

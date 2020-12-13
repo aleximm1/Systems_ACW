@@ -31,7 +31,7 @@ namespace Systems_ACW
         {
             int highestID = 0;
             XmlDocument xDoc = new XmlDocument();
-            xDoc.Load(".\\XML_Files\\Announcements.xml");
+            xDoc.Load("..\\..\\XML_Files\\Announcements.xml");
             int announcementId = 0;
             foreach (XmlNode node in xDoc.DocumentElement)
             {
@@ -88,7 +88,7 @@ namespace Systems_ACW
             string name = null;
             string accessLevel = null;
             XmlDocument usersDoc = new XmlDocument();
-            usersDoc.Load("XML_Files\\Users.xml");
+            usersDoc.Load("..\\..\\XML_Files\\Users.xml");
             foreach (XmlNode node in usersDoc.DocumentElement)
             {
                 if (node.Attributes["id"].Value == pUserId.ToString())

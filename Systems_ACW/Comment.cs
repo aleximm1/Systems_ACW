@@ -22,6 +22,27 @@ namespace Systems_ACW
 
         public Comment(string pBody, User pPoster, Announcement pAnnouncement)
         {
+            int highestID = 0;
+            XmlDocument xDoc = new XmlDocument();
+            xDoc.Load("..\\..\\XML_Files\\comments.xml");
+            int commentId = 0;
+            foreach (XmlNode node in xDoc.DocumentElement)
+            {
+                string commentIdString = node.Attributes[0].InnerText;
+                try
+                {
+                    commentId = Convert.ToInt32(commentIdString);
+                    if (commentId > highestID)
+                    {
+                        highestID = commentId;
+                    }
+                }
+                catch
+                {
+
+                }
+            }
+            id = highestID + 1;
             body = pBody;
             poster = pPoster;
             announcementCommentedOnID = pAnnouncement.ID;
@@ -41,13 +62,13 @@ namespace Systems_ACW
         private void SaveComment()
         {
             XmlDocument commentsDoc = new XmlDocument();
-            commentsDoc.Load("XML_Files\\Comments.xml");
+            commentsDoc.Load("..\\..\\XML_Files\\Comments.xml");
             XmlElement root = commentsDoc.DocumentElement;
             XmlElement commentElem = commentsDoc.CreateElement("comment");
             commentElem.SetAttribute("id", id.ToString());
             XmlElement bodyElem = commentsDoc.CreateElement("body");
             bodyElem.InnerText = body;
-            XmlElement posterIdElem = commentsDoc.CreateElement("posterID");
+            XmlElement posterIdElem = commentsDoc.CreateElement("posterId");
             posterIdElem.InnerText = Poster.Id.ToString();
             XmlElement dateTimePostedElem = commentsDoc.CreateElement("datePosted");
             dateTimePostedElem.InnerText = datePosted.ToString();
@@ -57,11 +78,11 @@ namespace Systems_ACW
             root.AppendChild(commentElem);
             commentsDoc.Save("..\\..\\XML_Files\\Comments.xml");
             XmlDocument announcementsDoc = new XmlDocument();
-            root = announcementsDoc.DocumentElement;
-            announcementsDoc.Load("XML_Files\\Announcements.xml");
+            announcementsDoc.Load("..\\..\\XML_Files\\Announcements.xml");
+            XmlElement root2 = announcementsDoc.DocumentElement;
             //XmlElement announcementElem = announcementsDoc.GetElementById(announcementCommentedOnID.ToString());
             XmlNodeList announcementsNodeList = announcementsDoc.GetElementsByTagName("announcement");
-            XmlNode announcementNode = announcementsDoc.CreateNode("Element","fillerNode", "");
+            XmlNode announcementNode = announcementsNodeList[0];
             foreach (XmlNode node in announcementsNodeList)
             {
                 if(node.Attributes[0].InnerText == announcementCommentedOnID.ToString())
@@ -70,13 +91,12 @@ namespace Systems_ACW
                     break;
                 }
             }
-            XmlNodeList commentsNodeList = announcementNode.GetElementsByTagName("comments");
-            XmlNode commentsElem = commentsNodeList[0];
+            XmlNode commentsElem = announcementNode.LastChild;
             XmlElement commentIdElem = announcementsDoc.CreateElement("commentID");
             commentIdElem.InnerText = id.ToString();
             commentsElem.AppendChild(commentIdElem);
             announcementNode.AppendChild(commentsElem);
-            root.AppendChild(announcementNode);
+            root2.AppendChild(announcementNode);
             announcementsDoc.Save("..\\..\\XML_Files\\Announcements.xml");
         }
     }

@@ -1,12 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Announcements>
-  <announcement id="1" moduleId="50051">
-    <title>First Announcement</title>
-    <body>This is the body of the first Announcement lkgsakjlfdlskjgfdlkjglkjsfdkglslkjg</body>
-    <posterID>586880</posterID>
-    <dateTimePosted>02/12/2020 15:42:01</dateTimePosted>
+  <announcement id="4" moduleId="50053">
+    <title>Second Test Announcements Title</title>
+    <body>Second Test Announcements Body</body>
+    <posterID>586888</posterID>
+    <dateTimePosted>11/12/2020 20:12:49</dateTimePosted>
     <comments>
-      <commentID>1</commentID>
     </comments>
   </announcement>
   <announcement id="2" moduleId="50052">
@@ -19,18 +18,45 @@
       <commentID>3</commentID>
     </comments>
   </announcement>
+  <announcement id="5" moduleId="50052">
+    <title>A</title>
+    <body>B</body>
+    <posterID>586777</posterID>
+    <dateTimePosted>13/12/2020 22:52:19</dateTimePosted>
+    <comments>
+    </comments>
+  </announcement>
+  <announcement id="1" moduleId="50051">
+    <title>First Announcement</title>
+    <body>This is the body of the first Announcement lkgsakjlfdlskjgfdlkjglkjsfdkglslkjg</body>
+    <posterID>586880</posterID>
+    <dateTimePosted>02/12/2020 15:42:01</dateTimePosted>
+    <comments>
+      <commentID>1</commentID>
+      <commentID>4</commentID>
+    </comments>
+  </announcement>
   <announcement id="3" moduleId="50051">
     <title>test Announcement</title>
     <body>Test Announcement's Body</body>
     <posterID>586888</posterID>
     <dateTimePosted>11/12/2020 20:11:00</dateTimePosted>
+    <comments>
+      <commentID>0</commentID>
+    </comments>
+  </announcement>
+  <announcement id="6" moduleId="50053">
+    <title>TestA</title>
+    <body>TestB</body>
+    <posterID>586777</posterID>
+    <dateTimePosted>13/12/2020 22:59:55</dateTimePosted>
     <comments />
   </announcement>
-  <announcement id="4" moduleId="50053">
-    <title>Second Test Announcements Title</title>
-    <body>Second Test Announcements Body</body>
-    <posterID>586888</posterID>
-    <dateTimePosted>11/12/2020 20:12:49</dateTimePosted>
+  <announcement id="7" moduleId="50053">
+    <title>Test Title</title>
+    <body>Test Body</body>
+    <posterID>586777</posterID>
+    <dateTimePosted>13/12/2020 23:00:29</dateTimePosted>
     <comments />
   </announcement>
 </Announcements>

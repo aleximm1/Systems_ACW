@@ -46,7 +46,7 @@ namespace Systems_ACW
         public void SaveAnnouncement(Announcement pAnnouncement, Module pCurrentModule)
         {
             XmlDocument announcementsDoc = new XmlDocument();
-            announcementsDoc.Load("XML_Files\\Announcements.xml");
+            announcementsDoc.Load("..\\..\\XML_Files\\Announcements.xml");
             XmlElement root = announcementsDoc.DocumentElement;
             XmlElement announcementElem = announcementsDoc.CreateElement("announcement");
             announcementElem.SetAttribute("id", pAnnouncement.ID.ToString());
