@@ -83,7 +83,7 @@ namespace Systems_ACW
             if (result == true)
             {
                 currentModule.LoadAnnouncement(newAnnouncementWindow.announcement);
-                currentModule.SaveAnnouncement(newAnnouncementWindow.announcement, currentModule);
+                currentModule.SaveAnnouncement(newAnnouncementWindow.announcement);
             }
         }
 

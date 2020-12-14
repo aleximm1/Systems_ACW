@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Chats>
+  <Chat id1="586777" id2="586888">
+    <message senderid="586777">
+      <body>Hi James</body>
+      <timestamp>14/12/2020 00:39:52</timestamp>
+    </message>
+    <message senderid="586777">
+      <body>test message from Jeff to James</body>
+      <timestamp>14/12/2020 00:56:28</timestamp>
+    </message>
+  </Chat>
+  <Chat id1="586777" id2="586880">
+    <message senderid="586777">
+      <body>This is a direct message from Jeff Jones</body>
+      <timestamp>13/12/2020 20:11:00</timestamp>
+    </message>
+    <message senderid="586880">
+      <body>This is a direct message from Alex Imm</body>
+      <timestamp>13/12/2020 21:11:00</timestamp>
+    </message>
+    <message senderid="586777">
+      <body>Test</body>
+      <timestamp>14/12/2020 01:01:29</timestamp>
+    </message>
+  </Chat>
+  <Chat id1="586880" id2="586888">
+    <message senderid="586880">
+      <body>Hi James</body>
+      <timestamp>14/12/2020 01:05:16</timestamp>
+    </message>
+  </Chat>
+</Chats>

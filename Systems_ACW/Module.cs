@@ -43,14 +43,14 @@ namespace Systems_ACW
             announcements = new List<Announcement>();
         }
 
-        public void SaveAnnouncement(Announcement pAnnouncement, Module pCurrentModule)
+        public void SaveAnnouncement(Announcement pAnnouncement)
         {
             XmlDocument announcementsDoc = new XmlDocument();
             announcementsDoc.Load("..\\..\\XML_Files\\Announcements.xml");
             XmlElement root = announcementsDoc.DocumentElement;
             XmlElement announcementElem = announcementsDoc.CreateElement("announcement");
             announcementElem.SetAttribute("id", pAnnouncement.ID.ToString());
-            announcementElem.SetAttribute("moduleId", pCurrentModule.ID.ToString());
+            announcementElem.SetAttribute("moduleId", id.ToString());
             XmlElement titleElem = announcementsDoc.CreateElement("title");
             titleElem.InnerText = pAnnouncement.Title;
             XmlElement bodyElem = announcementsDoc.CreateElement("body");
