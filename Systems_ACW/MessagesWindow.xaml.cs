@@ -150,6 +150,8 @@ namespace Systems_ACW
             ChatsDoc.Save("..\\..\\XML_Files\\Chats.xml");
             Message message = new Message(currentUser.Id.ToString() , MessageTextbox.Text, DateTime.Now);
             MessagesBox.Items.Add(message);
+            MessageBox.Show("Message sent");
+            MessageTextbox.Clear();
         }
     }
 }

@@ -72,6 +72,7 @@ namespace Systems_ACW
         private void CommentButton_Click(object sender, RoutedEventArgs e)
         {
             Comment newComment = new Comment(CommentTextbox.Text, currentUser, currentlySelectedAnnouncement);
+            CommentsBox.Items.Add(newComment);
             MessageBox.Show("Comment Saved");
             CommentTextbox.Clear();
         }
@@ -84,6 +85,7 @@ namespace Systems_ACW
             {
                 currentModule.LoadAnnouncement(newAnnouncementWindow.announcement);
                 currentModule.SaveAnnouncement(newAnnouncementWindow.announcement);
+                AnnouncementsBox.Items.Add(newAnnouncementWindow.announcement);
             }
         }
 
@@ -254,11 +256,6 @@ namespace Systems_ACW
             }
             User user = new User(pUserId, name, accessLevel);
             return user;
-        }
-
-        private void CommentsBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
         }
     }
 }

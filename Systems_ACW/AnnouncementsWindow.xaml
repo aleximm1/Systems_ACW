@@ -73,7 +73,7 @@
                     <Viewbox Grid.Row="0">
                         <TextBlock Text ="Comments"/>
                     </Viewbox>
-                    <ListView Grid.Row="1" x:Name="CommentsBox" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionMode="Single" SelectionChanged="CommentsBox_SelectionChanged">
+                    <ListView Grid.Row="1" x:Name="CommentsBox" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Focusable="False">
                         <ListView.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <UniformGrid Columns="1"/>

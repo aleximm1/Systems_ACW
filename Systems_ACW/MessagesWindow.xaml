@@ -65,7 +65,7 @@
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
                 <TextBox Grid.Column="0" Name="MessageTextbox"></TextBox>
-                <Button Grid.Column="1" Name="SendButton" Click="SendButton_Click">
+                <Button Grid.Column="1" Name="SendButton" Click="SendButton_Click" HorizontalAlignment="Left" Width="118">
                     <Viewbox>
                         <TextBlock Text="Send"/>
                     </Viewbox>
