@@ -80,7 +80,6 @@ namespace Systems_ACW
             XmlDocument announcementsDoc = new XmlDocument();
             announcementsDoc.Load("..\\..\\XML_Files\\Announcements.xml");
             XmlElement root2 = announcementsDoc.DocumentElement;
-            //XmlElement announcementElem = announcementsDoc.GetElementById(announcementCommentedOnID.ToString());
             XmlNodeList announcementsNodeList = announcementsDoc.GetElementsByTagName("announcement");
             XmlNode announcementNode = announcementsNodeList[0];
             foreach (XmlNode node in announcementsNodeList)
